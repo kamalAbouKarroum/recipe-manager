@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recipe Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-utensils"></i> <span class="text"></span></h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search recipes...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <button id="add-recipe-btn" class="btn-primary"><i class="fas fa-plus"></i> Add Recipe</button>
+                <div class="filters">
+                    <h3>Filters</h3>
+                    <div class="filter-tags">
+                        <button class="tag-btn active" data-tag="all"><span id="all-btn">All Recipes</span></button>
+                        <button class="tag-btn" data-tag="favorite"><i class="fas fa-star"></i> Favorites</button>
+                        <button class="tag-btn" data-tag="to-try"><i class="fas fa-list"></i> To Try</button>
+                        <button class="tag-btn" data-tag="made-before"><i class="fas fa-check"></i> Made Before</button>
+                    </div>
+                </div>
+                <div class="ai-tools">
+                    <h3>AI Tools</h3>
+                    <button id="generate-recipe-btn" class="btn-ai"><i class="fas fa-robot"></i> Generate Recipe</button>
+                    <button id="analyze-nutrition-btn" class="btn-ai"><i class="fas fa-chart-pie"></i> Analyze Nutrition</button>
+                </div>
+            </div>
+
+            <div class="recipe-list">
+                <div class="empty-state" id="empty-state">
+                    <i class="fas fa-book-open"></i>
+                    <p>No recipes found. Add your first recipe!</p>
+                </div>
+                <!-- Recipes will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div class="modal" id="recipe-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Add New Recipe</h2>
+            <form id="recipe-form">
+                <div class="form-group">
+                    <label for="recipe-name">Recipe Name</label>
+                    <input type="text" id="recipe-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipe-ingredients">Ingredients (one per line)</label>
+                    <textarea id="recipe-ingredients" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recipe-instructions">Instructions</label>
+                    <textarea id="recipe-instructions" rows="5" required></textarea>
+                </div>
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="recipe-cuisine">Cuisine Type</label>
+                        <input type="text" id="recipe-cuisine">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-time">Preparation Time (mins)</label>
+                        <input type="number" id="recipe-time">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tags</label>
+                    <div class="tag-options">
+                        <label class="tag-option">
+                            <input type="checkbox" name="tags" value="favorite">
+                            <span><i class="fas fa-star"></i> Favorite</span>
+                        </label>
+                        <label class="tag-option">
+                            <input type="checkbox" name="tags" value="to-try">
+                            <span><i class="fas fa-list"></i> To Try</span>
+                        </label>
+                        <label class="tag-option">
+                            <input type="checkbox" name="tags" value="made-before">
+                            <span><i class="fas fa-check"></i> Made Before</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-btn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Recipe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- AI Modal -->
+    <div class="modal" id="ai-modal">
+        <div class="modal-content ai-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="ai-modal-title">AI Recipe Generator</h2>
+            <div id="ai-modal-body">
+                <!-- AI content will be inserted here -->
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" id="ai-cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
