@@ -2,6 +2,9 @@
 
 A recipe management system with AI-powered features built with HTML, CSS, and JavaScript.
 
+# Live Preview
+https://aliceblue-reindeer-987066.hostingersite.com/
+
 ## Features
 - Add, edit, and delete recipes
 - Tag recipes as favorite, to try, or made before
